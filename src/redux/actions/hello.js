@@ -1,5 +1,17 @@
-import { createAction } from 'redux-actions';
+import axios from 'axios';
+// import { createAction } from 'redux-actions';
 
-export const requestAllAirports = createAction('GET_ALL_AIRPORT');
-export const requestAirport = createAction('GET_AIRPORT');
-export const requestDistance = createAction('DISTANCE');
+export const GET_ALL_AIRPORT = 'GET_ALL_AIRPORT';
+export const GET_AIRPORT = 'GET_AIRPORT';
+export const DISTANCE = 'DISTANCE';
+
+const ROOT_URL = '/api';
+
+export function requestAllAirports(id) {
+  const request = axios.post(`/posts`);
+
+  return {
+    type: GET_ALL_AIRPORT,
+    payload: request
+  };
+}
