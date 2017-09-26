@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 
 export const initialState = {
   all: [],
-  airport: { adadas: 'asdad' },
+  airport: {},
   distance: {}
 };
 

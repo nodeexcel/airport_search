@@ -20,16 +20,21 @@ class Home extends Component {
   }
   getAirport() {
     if (this.state.airport !== '') {
-      this.props.requestAirport({ airport: this.state.airport });
+      this.props.requestAirport(this.state.airport);
     } else {
       alert('Empty Airport');
     }
+    this.setState({ airportOne: '', airportTwo: '' });
   }
   getDistance() {
+    if (this.state.airportOne !== '' && this.state.airportTwo !== '') {
+      this.props.requestDistance(this.state.airportOne, this.state.airportTwo);
+    } else {
+      alert('Empty Airport');
+    }
+    this.setState({ airport: '' });
   }
   render() {
-    console.log(this.props, '=========');
-    console.log(this.state, '-----------------');
     return (
       <div style={{ 'width': '80%', 'margin': '50px auto' }}>
         <div style={{ 'float': 'left', 'position': 'relative' }}>
@@ -51,17 +56,15 @@ class Home extends Component {
 
 export function mapStateToProps(state) {
   return {
-    all: state.hello.all,
-    airport: state.hello.airport,
-    distance: state.hello.distance
+    all: state.hello
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     requestAllAirports: () => dispatch(requestAllAirports()),
-    requestAirport: () => dispatch(requestAirport()),
-    requestDistance: () => dispatch(requestDistance())
+    requestAirport: (data) => dispatch(requestAirport(data)),
+    requestDistance: (a, b) => dispatch(requestDistance(a, b))
   };
 }
 
