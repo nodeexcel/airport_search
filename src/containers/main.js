@@ -31,15 +31,19 @@ class Home extends Component {
     console.log(this.props, '=========');
     console.log(this.state, '-----------------');
     return (
-      <div>
-        <button onClick={() => this.props.requestAllAirports()}>Get All Airports</button>
-        <br /><br />
-        <input type="text" placeholder="Enter Airport code." onChange={(e) => this.setState({ airport: e.target.value })} />
-        <button onClick={() => this.getAirport()}>Get Nearest Airport</button><br /><br /><br />
-        <input type="text" placeholder="Enter Airport code." onChange={(e) => this.setState({ airportOne: e.target.value })} />
-        <input type="text" placeholder="Enter Airport code." onChange={(e) => this.setState({ airportTwo: e.target.value })} />
-        <button onClick={() => this.getDistance()}>Distance between Airport</button><br /><br /><br /><br /><br />
-        <DisplayData data={'true'} category={'Airports'} />
+      <div style={{ 'width': '80%', 'margin': '50px auto' }}>
+        <div style={{ 'float': 'left', 'position': 'relative' }}>
+          <button onClick={() => this.props.requestAllAirports()}>Get All Airports</button>
+          <br /><br />
+          <input type="text" placeholder="Enter Airport code." onChange={(e) => this.setState({ airport: e.target.value })} />
+          <button onClick={() => this.getAirport()}>Get Nearest Airport</button><br /><br /><br />
+          <input type="text" placeholder="Enter Airport code." onChange={(e) => this.setState({ airportOne: e.target.value })} />
+          <input type="text" placeholder="Enter Airport code." onChange={(e) => this.setState({ airportTwo: e.target.value })} />
+          <button onClick={() => this.getDistance()}>Distance between Airport</button><br /><br /><br /><br /><br />
+        </div>
+        <div style={{ 'float': 'right', 'position': 'relative' }}>
+          <DisplayData data={this.props.all} category={'Airports'} />
+        </div>
       </div>
     );
   }
